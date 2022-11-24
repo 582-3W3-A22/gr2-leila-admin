@@ -1,27 +1,6 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;900&family=Roboto:wght@400;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="ressources/css/leila-admin.css">
-    <link rel="icon" type="image/png" href="ressources/images/favicon.png" />
-    <title>Admin :: Restaurant Leila - Catégories</title>
-</head>
-<body>
-    <header>
-        <h2>Admin - Restaurant Leila</h2>
-        <nav class="navigation-principale">
-            <ul>
-                <li class="actif"><a href="categories.html">Catégories</a></li>
-                <li><a href="plats.html">Plats</a></li>
-                <li><a href="vins.html">Vins</a></li>
-            </ul>
-        </nav>
-    </header>
-
+<?php
+    include('inclusions/entete.inc.php');
+?>
     <section class="liste-enregistrements">
         <h2><code>Catégories</code></h2>
         <header>
@@ -75,7 +54,6 @@
             </article>
         </div>
     </section>
-
-    <script src="ressources/js/leila-admin.js"></script>
-</body>
-</html>
+<?php
+    include('inclusions/pied2page.inc.php');
+?>
