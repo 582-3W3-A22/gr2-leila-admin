@@ -3,7 +3,7 @@
 
     if(isset($_POST['courriel'])) {
         $courriel =  $_POST['courriel'];
-        $mdp = hash('sha3-256', $_POST['mdp']);
+        $mdp = hash('sha512', $_POST['mdp']);
 
         $cnx = mysqli_connect('localhost', 'root', '', 'leila');
         mysqli_set_charset($cnx, 'utf8');
@@ -11,6 +11,7 @@
                         WHERE courriel='$courriel' AND mdp='$mdp'");
         $utilisateur = mysqli_fetch_assoc($reponse);
         if($utilisateur) {
+            // Enregistrer l'état de la connexion active dans la *SESSION* d'utilisation.
             echo "Vous êtes connecté ...";
         }
         else {

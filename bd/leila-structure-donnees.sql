@@ -3,19 +3,13 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : jeu. 24 nov. 2022 à 17:05
+-- Généré le : mar. 29 nov. 2022 à 22:27
 -- Version du serveur : 10.4.24-MariaDB
 -- Version de PHP : 8.1.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
 
 --
 -- Base de données : `leila`
@@ -93,7 +87,7 @@ CREATE TABLE `utilisateur` (
   `id` tinyint(3) UNSIGNED NOT NULL,
   `nom_complet` varchar(50) NOT NULL,
   `courriel` varchar(100) NOT NULL,
-  `mdp` char(64) NOT NULL,
+  `mdp` char(128) NOT NULL,
   `dcc` date NOT NULL DEFAULT current_timestamp(),
   `actif` tinyint(3) UNSIGNED NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -103,7 +97,7 @@ CREATE TABLE `utilisateur` (
 --
 
 INSERT INTO `utilisateur` (`id`, `nom_complet`, `courriel`, `mdp`, `dcc`, `actif`) VALUES
-(1, 'Admin', 'admin@test.com', 'fb001dfcffd1c899f3297871406242f097aecf1a5342ccf3ebcd116146188e4b', '2022-11-24', 0);
+(1, 'Admin', 'admin@test.com', 'c7ad44cbad762a5da0a452f9e854fdc1e0e7a52a38015f23f3eab1d80b931dd472634dfac71cd34ebc35d16ab7fb8a90c81f975113d6c7538dc69dd8de9077ec', '2022-11-24', 0);
 
 -- --------------------------------------------------------
 
@@ -276,7 +270,3 @@ ALTER TABLE `plat`
 ALTER TABLE `vin`
   ADD CONSTRAINT `vin_ibfk_1` FOREIGN KEY (`categorie_id`) REFERENCES `categorie` (`id`);
 COMMIT;
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
