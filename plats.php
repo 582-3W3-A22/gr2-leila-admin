@@ -9,11 +9,11 @@
         header('Location: index.php?e=4000');
     }
 
-    $page = 'categories';
+    $page = 'plats';
     include('inclusions/entete.inc.php');
 ?>
     <section class="liste-enregistrements">
-        <h2><code>Catégories</code></h2>
+        <h2><code>Plats</code></h2>
         <header>
             <span>id</span>
             <span>nom</span>

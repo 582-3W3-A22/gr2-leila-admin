@@ -15,9 +15,15 @@
         <h2>Admin - Restaurant Leila</h2>
         <nav class="navigation-principale">
             <ul>
-                <li class="actif"><a href="categories.php">Catégories</a></li>
-                <li><a href="plats.php">Plats</a></li>
-                <li><a href="vins.php">Vins</a></li>
+                <li class="<?= ($page === 'categories') ? 'actif' : ''; ?>"><a href="categories.php">Catégories</a></li>
+                <li class="<?= ($page === 'plats') ? 'actif' : ''; ?>"><a href="plats.php">Plats</a></li>
+                <li class="<?= ($page === 'vins') ? 'actif' : ''; ?>"><a href="vins.php">Vins</a></li>
             </ul>
+            <?php if(isset($_SESSION['util-courriel'])) : ?>
+                <div class="profile-connexion">
+                    <?= $_SESSION['util-courriel']['nom_complet'] ?>
+                    <a href="index.php?action=deconnexion&e=3000" class="btn btn-supprimer">Déconnexion</a>
+                </div>
+            <?php endif; ?>
         </nav>
     </header>

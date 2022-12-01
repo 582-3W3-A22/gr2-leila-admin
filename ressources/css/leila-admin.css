@@ -23,6 +23,9 @@ body header h2 {
 }
 body header nav {
   background-color: #aaa;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 body header nav ul {
   margin: 0;
@@ -45,6 +48,11 @@ body header nav ul li:first-of-type {
 body header nav ul li.actif {
   background-color: #005c4a;
 }
+
+body header nav .profile-connexion {
+  padding-right: 1rem;
+}
+
 body section.gestion-utilisateur form {
   display: flex;
   flex-direction: column;
