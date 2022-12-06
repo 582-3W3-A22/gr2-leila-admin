@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : mar. 29 nov. 2022 à 22:27
+-- Généré le : mar. 06 déc. 2022 à 22:55
 -- Version du serveur : 10.4.24-MariaDB
 -- Version de PHP : 8.1.6
 
@@ -26,7 +26,7 @@ USE `leila`;
 CREATE TABLE `categorie` (
   `id` tinyint(4) NOT NULL,
   `nom` varchar(100) NOT NULL,
-  `type` enum('plat','vin') NOT NULL
+  `type` enum('plat','vin') NOT NULL DEFAULT 'plat'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -34,14 +34,18 @@ CREATE TABLE `categorie` (
 --
 
 INSERT INTO `categorie` (`id`, `nom`, `type`) VALUES
+(10, 'Apéros et bouchées', 'plat'),
+(9, 'Brunch', 'plat'),
 (5, 'Desserts', 'plat'),
 (1, 'Entrées', 'plat'),
 (4, 'Fromages', 'plat'),
+(13, 'Pâtes et pizza', 'plat'),
 (2, 'Poissons', 'plat'),
 (3, 'Viandes', 'plat'),
 (7, 'Vins blancs', 'vin'),
 (6, 'Vins effervescents', 'vin'),
-(8, 'Vins rouges', 'vin');
+(8, 'Vins rouges', 'vin'),
+(15, 'Whiskeys et bourbons', 'vin');
 
 -- --------------------------------------------------------
 
@@ -97,7 +101,7 @@ CREATE TABLE `utilisateur` (
 --
 
 INSERT INTO `utilisateur` (`id`, `nom_complet`, `courriel`, `mdp`, `dcc`, `actif`) VALUES
-(1, 'Admin', 'admin@test.com', 'c7ad44cbad762a5da0a452f9e854fdc1e0e7a52a38015f23f3eab1d80b931dd472634dfac71cd34ebc35d16ab7fb8a90c81f975113d6c7538dc69dd8de9077ec', '2022-11-24', 0);
+(1, 'Admin', 'admin@test.com', 'c7ad44cbad762a5da0a452f9e854fdc1e0e7a52a38015f23f3eab1d80b931dd472634dfac71cd34ebc35d16ab7fb8a90c81f975113d6c7538dc69dd8de9077ec', '2022-11-24', 1);
 
 -- --------------------------------------------------------
 
@@ -234,7 +238,7 @@ ALTER TABLE `vin`
 -- AUTO_INCREMENT pour la table `categorie`
 --
 ALTER TABLE `categorie`
-  MODIFY `id` tinyint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` tinyint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT pour la table `plat`
