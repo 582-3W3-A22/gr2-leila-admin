@@ -53,6 +53,10 @@ body header nav .profile-connexion {
   padding-right: 1rem;
 }
 
+body header nav .profile-connexion a {
+  color: white;
+}
+
 body section.gestion-utilisateur form {
   display: flex;
   flex-direction: column;
@@ -121,32 +125,32 @@ body section.liste-enregistrements header span.action {
 body section.liste-enregistrements div.data {
   display: table-row-group;
 }
-body section.liste-enregistrements div.data article {
+body section.liste-enregistrements div.data form {
   display: table-row;
   border-bottom: thin solid #aaa;
 }
-body section.liste-enregistrements div.data article:nth-of-type(even) {
+body section.liste-enregistrements div.data form:nth-of-type(even) {
   background-color: #eee;
 }
-body section.liste-enregistrements div.data article:last-of-type {
+body section.liste-enregistrements div.data form:last-of-type {
   border-bottom: 5px solid #005c4a;
 }
-body section.liste-enregistrements div.data article span {
+body section.liste-enregistrements div.data form span {
   display: table-cell;
   padding: 0.75rem 1rem;
   text-align: left;
 }
-body section.liste-enregistrements div.data article span.action {
+body section.liste-enregistrements div.data form span.action {
   text-align: center;
 }
-body section.liste-enregistrements div.data article span input, body section.liste-enregistrements div.data article span select {
+body section.liste-enregistrements div.data form span input, body section.liste-enregistrements div.data form span select {
   padding: 0.5rem;
   background-color: inherit;
 }
-body section.liste-enregistrements div.data article span input {
+body section.liste-enregistrements div.data form span input {
   width: 100%;
 }
-body section.liste-enregistrements div.data article:not(.nouveau) input, body section.liste-enregistrements div.data article:not(.nouveau) select {
+body section.liste-enregistrements div.data form:not(.nouveau) input, body section.liste-enregistrements div.data form:not(.nouveau) select {
   border: none;
 }
 body .btn {

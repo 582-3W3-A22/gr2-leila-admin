@@ -9,6 +9,49 @@
         header('Location: index.php?e=4000');
     }
 
+    // Manipulation du contenu dans la BD
+    $cnx = mysqli_connect('localhost', 'root', '', 'leila');
+    mysqli_set_charset($cnx, 'utf8');
+    
+    // Opération AJOUT (CREATE/INSERT)
+    
+    if(isset($_GET['op'])) {
+        $operation = $_GET['op'];
+        // La conditionnelle suivante peut être remplacée par une instruction 
+        // SWITCH/CASE
+        // if($operation === 'ajout') {
+        //     $nom = $_POST['nom'];
+        //     $type = $_POST['type'];
+        //     mysqli_query($cnx, "INSERT INTO categorie VALUES (0, '$nom', '$type')");
+        // }
+        // else if ($operation === 'modification') {
+        //     $id = $_POST['id'];
+        //     $nom = $_POST['nom'];
+        //     $type = $_POST['type'];
+        //     mysqli_query($cnx, "UPDATE categorie SET nom='$nom', type='$type' WHERE id=$id");
+        // }
+        // else if($operation === 'suppression') {
+        //     //mysqli_query($cnx, "DELETE ...");
+        // }
+        switch($operation) {
+            case 'ajout': 
+                $nom = $_POST['nom'];
+                $type = $_POST['type'];
+                mysqli_query($cnx, "INSERT INTO categorie VALUES (0, '$nom', '$type')");
+                break;
+            case 'modification': 
+                $id = $_POST['id'];
+                $nom = $_POST['nom'];
+                $type = $_POST['type'];
+                mysqli_query($cnx, "UPDATE categorie SET nom='$nom', type='$type' WHERE id=$id");
+                break;
+        }
+    }
+
+    // Opération LECTURE (READ/SELECT)
+    // On obtient un jeu d'enregistrements contenant tous les éléments de la BD
+    $resultat = mysqli_query($cnx, "SELECT *  FROM categorie ORDER BY `type`, id");
+
     $page = 'categories';
     include('inclusions/entete.inc.php');
 ?>
@@ -21,48 +64,44 @@
             <span class="action"></span>
         </header>
         <div class="data">
-            <article class="nouveau">
+            <!-- Formulaire pour ajout d'un élément dans la BD (INSERT) -->
+            <form class="nouveau" action="?op=ajout" method="post">
                 <span></span>
-                <span><input type="text" name="cat_nom" value=""></span>
+                <span><input type="text" name="nom" value=""></span>
                 <span>
-                    <select name="cat_type" id="cat_type">
-                        <option value="">Choisir</option>
+                    <select name="type">
                         <option value="plat">Plat</option>
-                        <option value="plat">Vin</option>
+                        <option value="vin">Vin</option>
                     </select>
                 </span>
                 <span class="action">
-                    <button class="btn btn-ajouter btn-plein">ajouter</button>
+                    <button type="submit" class="btn btn-ajouter btn-plein">ajouter</button>
                 </span>
-            </article>
-            <article>
-                <span>1</span>
-                <span><input type="text" name="cat_nom" value="Entrées"></span>
-                <span>
-                    <select name="cat_type" id="cat_type">
-                        <option value="plat">Plat</option>
-                        <option value="plat">Vin</option>
-                    </select>
-                </span>
-                <span class="action">
-                    <button class="btn btn-modifier">modifier</button>
-                    <button class="btn btn-supprimer">supprimer</button>
-                </span>
-            </article>
-            <article>
-                <span>2</span>
-                <span><input type="text" name="cat_nom" value="Rouge"></span>
-                <span>
-                    <select name="cat_type" id="cat_type">
-                        <option value="plat">Plat</option>
-                        <option value="plat" selected>Vin</option>
-                    </select>
-                </span>
-                <span class="action">
-                    <button class="btn btn-modifier">modifier</button>
-                    <button class="btn btn-supprimer">supprimer</button>
-                </span>
-            </article>
+            </form>
+
+            <!-- 
+                Gabarit de formulaire pour affichage/modification/suppression 
+                d'un élément de la BD.
+            -->
+            <?php
+                while($enreg = mysqli_fetch_assoc($resultat)) :
+                    //print_r($enreg); // Pour débogage
+            ?>
+                <form method="post">
+                    <span><input readonly type="text" name="id" value="<?= $enreg['id']; ?>"></span>
+                    <span><input type="text" name="nom" value="<?= $enreg['nom']; ?>"></span>
+                    <span>
+                        <select name="type">
+                            <option <?= ($enreg['type']==='plat') ? 'selected' : '' ?> value="plat">Plat</option>
+                            <option <?= ($enreg['type']==='vin') ? 'selected' : '' ?> value="vin">Vin</option>
+                        </select>
+                    </span>
+                    <span class="action">
+                        <button type="submit" formaction="?op=modification" class="btn btn-modifier">modifier</button>
+                        <button type="submit" formaction="?op=suppression" class="btn btn-supprimer">supprimer</button>
+                    </span>
+                </form>
+            <?php endwhile; ?>
         </div>
     </section>
 <?php
