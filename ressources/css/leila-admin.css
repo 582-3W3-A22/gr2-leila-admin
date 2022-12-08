@@ -174,3 +174,31 @@ body .btn.btn-modifier {
 body .btn.btn-supprimer {
   background-color: #900;
 }
+
+/* Messages "Toast" */
+.toast {
+  position: fixed;
+  bottom: -10rem;
+  padding: 0.5rem 0.75rem;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 0.5rem;
+  animation: affichage-toast 3s ease-in-out 0s 1 normal forwards;
+}
+
+.toast-info {
+  background-color: rgb(50, 50, 108);
+  color: white;
+}
+
+@keyframes affichage-toast {
+  from {
+    bottom: -10rem;
+  }
+  10%, 90% {
+    bottom: 10rem;
+  }
+  to {
+    bottom: -10rem;
+  }
+}

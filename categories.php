@@ -13,8 +13,7 @@
     $cnx = mysqli_connect('localhost', 'root', '', 'leila');
     mysqli_set_charset($cnx, 'utf8');
     
-    // Opération AJOUT (CREATE/INSERT)
-    
+    // Opérations changement de données 
     if(isset($_GET['op'])) {
         $operation = $_GET['op'];
         // La conditionnelle suivante peut être remplacée par une instruction 
@@ -34,16 +33,23 @@
         //     //mysqli_query($cnx, "DELETE ...");
         // }
         switch($operation) {
+            // Création
             case 'ajout': 
                 $nom = $_POST['nom'];
                 $type = $_POST['type'];
                 mysqli_query($cnx, "INSERT INTO categorie VALUES (0, '$nom', '$type')");
                 break;
+            // Modification
             case 'modification': 
                 $id = $_POST['id'];
                 $nom = $_POST['nom'];
                 $type = $_POST['type'];
                 mysqli_query($cnx, "UPDATE categorie SET nom='$nom', type='$type' WHERE id=$id");
+                break;
+            // Supression
+            case 'suppression': 
+                $id = $_POST['id'];
+                mysqli_query($cnx, "DELETE FROM categorie WHERE id=$id");
                 break;
         }
     }

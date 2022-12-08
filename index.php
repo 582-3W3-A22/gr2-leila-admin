@@ -68,7 +68,7 @@
             <input class="btn btn-connexion" type="submit" value="Connexion">
         </form>
         <?php if(isset($erreur)) : ?>
-            <p class="toast"><?= $erreur; ?></p>
+            <p class="toast toast-info"><?= $erreur; ?></p>
         <?php endif; ?>
     </section>
 <?php
